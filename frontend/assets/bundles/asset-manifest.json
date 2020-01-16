@@ -1,0 +1,11 @@
+{
+  "main.css": "/static/bundles/css/main.5df7d988.css",
+  "main.js": "/static/bundles/js/main.fb1b3db0.js",
+  "main.js.map": "/static/bundles/js/main.fb1b3db0.js.map",
+  "css/main.5df7d988.css.map": "/static/bundles/css/main.5df7d988.css.map",
+  "index.html": "/static/bundles/index.html",
+  "js/main.fb1b3db0.js.LICENSE": "/static/bundles/js/main.fb1b3db0.js.LICENSE",
+  "media/logo.svg": "/static/bundles/media/logo.5d5d9eef.svg",
+  "precache-manifest.751aa6293e835206edf5308b670282bb.js": "/static/bundles/precache-manifest.751aa6293e835206edf5308b670282bb.js",
+  "service-worker.js": "/static/bundles/service-worker.js"
+}
