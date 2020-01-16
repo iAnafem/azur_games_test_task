@@ -1,4 +1,3 @@
-
 from django.db import migrations
 from faker import Faker
 import random
@@ -53,5 +52,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(generate_test_data),
+        migrations.RunPython(generate_test_data)
     ]

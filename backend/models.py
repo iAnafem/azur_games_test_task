@@ -8,7 +8,7 @@ class VisitedPage(models.Model):
     page_url = models.URLField()
     domain = models.CharField(max_length=200)
     load_time = models.PositiveIntegerField()
-    status_code = models.PositiveIntegerField()
+    status_code = models.CharField(max_length=3)
     page_size = models.PositiveIntegerField()
 
     class Meta:

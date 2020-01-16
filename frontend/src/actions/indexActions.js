@@ -6,7 +6,10 @@ export const fetchVisitedPages = () => {
   return (dispatch) => {
     let headers = {"Content-Type": "application/json"};
 
-    return fetch(`/api/visitedPages`, {headers,})
+    return fetch(
+      `/api/visitedPages/?from=$until=&keyword=c&domain=&statusCode=200&minPageSize=${10655}&groupDate=f&groupKey=a&groupDom=&groupStat=`,
+      {headers,}
+      )
       .then(result => {
         if (result.status < 500) {
           return result.json().then(data => {
