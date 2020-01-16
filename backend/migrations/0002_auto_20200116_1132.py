@@ -26,8 +26,8 @@ def generate_test_data(apps, schema_editor):
     for number in range(1000):
         # create fake data
         date_of_visit = fake.date_time_this_month(before_now=True, after_now=False, tzinfo=pytz.UTC)
-        keyword = random.choice(list_of_keywords),
-        domain = {random.choice(list_of_domains)}
+        keyword = random.choice(list_of_keywords)
+        domain = random.choice(list_of_domains)
         page_url = f'{domain}/{keyword}'
         load_time = fake.random_number(digits=2)
         status_code = random.choice(list_of_status_codes)
