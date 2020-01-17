@@ -16,11 +16,3 @@ class VisitedPagesSerializer(serializers.ModelSerializer):
         model = VisitedPage
         fields = '__all__'
 
-
-class VisitedPagesWithGroupsSerializer(serializers.ModelSerializer):
-    # total_size = serializers.IntegerField()
-    date_of_visit = serializers.DateTimeField(format("%d-%m-%Y"))
-
-    class Meta:
-        model = VisitedPage
-        fields = '__all__'
