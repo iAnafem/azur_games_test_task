@@ -16,7 +16,11 @@
 
 5. git clone https://github.com/iAnafem/azur_games_test_task.git
 6. cd azur_games_test_task/
-
-7. ./launch_app.sh
+7. python3.7 -m venv venv
+8. source venv/bin/activate
+9. pip install --upgrade pip
+10. pip install -r requirements.txt
+11. ./manage.py migrate
+12. ./manage.py runserver --setting=azure_games.production_settings
 
 Огромная просьба оставить фидбек!
