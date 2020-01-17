@@ -13,14 +13,10 @@
 2. sudo apt install software-properties-common
 3. sudo add-apt-repository ppa:deadsnakes/ppa
 4. sudo apt install python3.7
+
 5. git clone https://github.com/iAnafem/azur_games_test_task.git
 6. cd azur_games_test_task/
-7. python3.7 -m venv venv
-8. cd azur_games_test_task/
-9. pip install --upgrade pip
-10. pip install -r requirements.txt
-11. ./manage.py migrate
-12. ./manage.py runserver --setting=azure_games.production_settings
 
+7. ./launch_app.sh
 
 Огромная просьба оставить фидбек!
