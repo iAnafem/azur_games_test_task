@@ -31,31 +31,37 @@ def conditional_status_code_filter(status_code):
     return Q()
 
 
+def get_page_filters(query_params):
+    from_date = query_params.get('from')
+    until_date = query_params.get('until')
+    keyword = query_params.get('keyword').lower()
+    domain = query_params.get('domain').lower()
+    status_code = query_params.get('statusCode')
+    min_page_size = query_params.get('minPageSize')
+
+    page_filters = [
+        conditional_date_filter(from_date, until_date),
+        conditional_keyword_filter(keyword),
+        conditional_domain_filter(domain),
+        conditional_status_code_filter(status_code),
+        conditional_page_size_filter(min_page_size),
+    ]
+
+    return page_filters
+
+
 def conditional_page_size_filter(page_size):
     if page_size:
         return Q(page_size__gt=page_size)
     return Q()
 
 
-def get_visited_pages(query_params):
-    from_date = query_params.get('from')
-    until_date = query_params.get('until')
-    keyword = query_params.get('keyword').lower()
-    domain = query_params.get('domain')
-    status_code = query_params.get('statusCode')
-    min_page_size = query_params.get('minPageSize')
+def get_fields_for_grouping(query_params):
     gr_date = query_params.get('grDate')
     gr_key = query_params.get('grKey')
     gr_dom = query_params.get('grDom')
     gr_stat = query_params.get('grStat')
 
-    visited_pages = VisitedPage.objects.filter(
-        conditional_date_filter(from_date, until_date),
-        conditional_keyword_filter(keyword),
-        conditional_domain_filter(domain),
-        conditional_status_code_filter(status_code),
-        conditional_page_size_filter(min_page_size),
-    )
     fields_for_grouping = []
     if gr_date:
         fields_for_grouping.append('date_of_visit')
@@ -65,6 +71,17 @@ def get_visited_pages(query_params):
         fields_for_grouping.append('domain')
     if gr_stat:
         fields_for_grouping.append('status_code')
+    return fields_for_grouping
+
+
+def get_visited_pages(query_params):
+
+    page_filters = get_page_filters(query_params)
+
+    visited_pages = VisitedPage.objects.filter(*page_filters)
+
+    fields_for_grouping = get_fields_for_grouping(query_params)
+
     if fields_for_grouping:
         final_queryset = visited_pages.order_by(
             'keyword'
