@@ -10,4 +10,5 @@ class VisitedPagesListAPI(generics.ListAPIView):
     serializer_class = VisitedPagesSerializer
 
     def get_queryset(self):
-        return get_visited_pages()
+        query_params = self.request.query_params
+        return get_visited_pages(query_params)

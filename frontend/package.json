@@ -87,7 +87,9 @@
   },
   "devDependencies": {
     "@material-ui/core": "^4.8.3",
+    "@material-ui/icons": "^4.5.1",
     "fork-ts-checker-webpack-plugin-alt": "^0.4.14",
+    "mui-datatables": "^2.14.0",
     "webpack-bundle-tracker": "^0.4.3"
   },
   "jest": {

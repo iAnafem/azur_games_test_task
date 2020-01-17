@@ -3,5 +3,4 @@ from backend.api import VisitedPagesListAPI
 
 
 urlpatterns = [
-    re_path(r'^$', VisitedPagesListAPI.as_view(), name="visited_pages.html"),
-]
+    re_path(r'^', VisitedPagesListAPI.as_view(), name="visited_pages"),
