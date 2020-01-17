@@ -7,7 +7,7 @@ export const fetchVisitedPages = () => {
     let headers = {"Content-Type": "application/json"};
 
     return fetch(
-      `/api/visitedPages/?from=$until=&keyword=c&domain=&statusCode=200&minPageSize=${10655}&groupDate=f&groupKey=a&groupDom=&groupStat=`,
+      `/api/visitedPages/?from=$until=&keyword=sc&domain=&statusCode=4хх&minPageSize=${10655}&grDate=&grKey=1&grDom=&grStat=&`,
       {headers,}
       )
       .then(result => {

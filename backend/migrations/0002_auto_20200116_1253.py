@@ -9,8 +9,8 @@ def generate_test_data(apps, schema_editor):
     fake = Faker()
     list_of_keywords = [
         'c',
-        'c++',
-        'c#',
+        'pascal',
+        'kotlin',
         'python',
         'java',
         'fortran',
@@ -20,7 +20,9 @@ def generate_test_data(apps, schema_editor):
         'go',
     ]
     list_of_domains = [fake.domain_name() for domain in range(25)]
-    list_of_status_codes = ['200', '203', '204', '301', '302', '303', '304', '400', '401', '402', '403', '404', '405']
+    list_of_status_codes = [
+        '200', '203', '204', '301', '302', '303', '304', '400', '401', '402', '403', '404', '405', '500'
+    ]
 
     for number in range(1000):
         # create fake data
