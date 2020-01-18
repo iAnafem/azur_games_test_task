@@ -1,5 +1,5 @@
 """
-WSGI config for azure_games project.
+WSGI config for azur_games project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azure_games.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azur_games.settings')
 
 application = get_wsgi_application()

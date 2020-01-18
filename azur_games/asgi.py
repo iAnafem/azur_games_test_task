@@ -1,5 +1,5 @@
 """
-ASGI config for azure_games project.
+ASGI config for azur_games project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azure_games.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'azur_games.settings')
 
 application = get_asgi_application()

@@ -6,21 +6,62 @@
 не нужен отдельный сервер БД, джанго хранит данные БД в своей файловой системе.
 
 Для запуска приложения под Linux выполняем следующие действия:
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+1. Клонируем проект с GitHub и переходим в каталог проекта: 
 
-(если Python3.7 уже установлен, шаги 1-4 пропускаем)
+    > git clone https://github.com/iAnafem/azur_games_test_task.git
+                                 
+    > cd azur_games_test_task/
 
-1. sudo apt update
-2. sudo apt install software-properties-common
-3. sudo add-apt-repository ppa:deadsnakes/ppa
-4. sudo apt install python3.7
+2. Запускаем скрипт launch.sh:
 
-5. git clone https://github.com/iAnafem/azur_games_test_task.git
-6. cd azur_games_test_task/
-7. python3.7 -m venv venv
-8. source venv/bin/activate
-9. pip install --upgrade pip
-10. pip install -r requirements.txt
-11. ./manage.py migrate
-12. ./manage.py runserver --setting=azure_games.production_settings
+    > sudo ./launch.sh
+    
+    ВАЖНО: если bash-интерпретатор у вас установлен не в 
+    /bin/bash (где он установлен, вы можете узнать набрав whereis bash) 
+    измените пусть к bash в перовой строке файла launch.sh. 
+
+Что делает скрипт: 
+                                
+1. Устанавливаем Python3.7:
+
+    > sudo apt update
+                                                                                      
+    > sudo apt install software-properties-common
+                                                                                                                                                                                                   
+    > sudo add-apt-repository ppa:deadsnakes/ppa
+                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+    > sudo apt install python3.7
+                                                                                                                                                                     
+2. Создаем и активируем новую виртуальную среду внутри каталога проекта:
+
+    > python3.7 -m venv venv && source venv/bin/activate
+                                                                             
+3. Устанавливаем зависимости:
+
+    > pip install --upgrade pip
+                                  
+    > pip install -r requirements.txt
+                                                                                                     
+4. В ./backend/migrations/0002_auto_20200116_1253.py создана функция,
+которая добавляет в БД 1000 тестовых записей. В поле 'keyword' 10 вариантов:
+    - c
+    - pascal
+    - kotlin
+    - python
+    - java
+    - fortran
+    - scala
+    - javascript
+    - php
+    - go 
+
+    Создаем схему БД и заполняем ее тестовыми данными:
+
+    > ./manage.py migrate
+                                                          
+5. Запускаем приложение:
+
+    > ./manage.py runserver --setting=azur_games.production_settings
 
 Огромная просьба оставить фидбек!
