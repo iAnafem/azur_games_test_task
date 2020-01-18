@@ -15,13 +15,14 @@ const initialState = {
   grKey: '',
   grDom: '',
   grStat: '',
+  clearButton: false,
 };
 
 const indexReducer = (state=initialState, action) => {
   switch(action.type) {
 
     case types.FETCH_VISITED_PAGES:
-      return {...state, visitedPages: [...action.visitedPages], isLoading: false};
+      return {...state, visitedPages: [...action.visitedPages], isLoading: false, clearButton: false};
 
     case types.SET_FROM_DATE:
       return {...state, from: action.value};
@@ -65,6 +66,9 @@ const indexReducer = (state=initialState, action) => {
     case types.RESET_STATUS_CODE_GROUPING:
       return {...state, grStat: ''};
 
+    case types.DISABLE_CLEAR_BUTTON:
+      return {...state, clearButton: false};
+
     case types.CLEAR_STATE:
       return {
         visitedPages : [],
@@ -79,6 +83,7 @@ const indexReducer = (state=initialState, action) => {
         grKey: '',
         grDom: '',
         grStat: '',
+        clearButton: true,
       };
 
     default:

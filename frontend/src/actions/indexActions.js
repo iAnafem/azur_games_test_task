@@ -92,12 +92,20 @@ const getSetGroupActionType = (group) => {
   return types.SET_STATUS_CODE_GROUPING
 };
 
-export const clearState= () => {
+export const clearState = () => {
   return (dispatch) => {
     return dispatch({
       type: types.CLEAR_STATE,
     })
   }
+};
+
+export const disableClearButton = () => {
+  return (dispatch) => {
+      return dispatch({
+        type: types.DISABLE_CLEAR_BUTTON,
+      })
+    }
 };
 
 export const setGroup = (group) => {
