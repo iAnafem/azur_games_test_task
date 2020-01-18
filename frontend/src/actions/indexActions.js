@@ -119,6 +119,24 @@ export const setGroup = (group) => {
   }
 };
 
+export const addTableColumn = (value) => {
+  return (dispatch) => {
+    return dispatch({
+      type: types.ADD_TABLE_COLUMN,
+      value
+    })
+  }
+};
+
+export const removeTableColumn = (value) => {
+  return (dispatch) => {
+    return dispatch({
+      type: types.REMOVE_TABLE_COLUMN,
+      value
+    })
+  }
+};
+
 const getResetGroupActionType = (group) => {
   if (group === filters.grDate) {
     return types.RESET_DATE_GROUPING

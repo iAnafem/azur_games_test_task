@@ -1,4 +1,5 @@
 import indexActionsTypes from "../constants/indexActionsTypes";
+import {useSelector} from "react-redux";
 
 const types = indexActionsTypes;
 
@@ -16,9 +17,11 @@ const initialState = {
   grDom: '',
   grStat: '',
   clearButton: false,
+  tableColumns: [],
 };
 
 const indexReducer = (state=initialState, action) => {
+
   switch(action.type) {
 
     case types.FETCH_VISITED_PAGES:
@@ -84,7 +87,19 @@ const indexReducer = (state=initialState, action) => {
         grDom: '',
         grStat: '',
         clearButton: true,
+        tableColumns: [],
       };
+
+    case types.ADD_TABLE_COLUMN:
+      let extendedArray = state.tableColumns;
+      extendedArray.push(action.value);
+
+      return {...state, tableColumns: extendedArray};
+
+    case types.REMOVE_TABLE_COLUMN:
+      let reducedArray = state.tableColumns.filter(column =>  { return column !== action.value });
+
+      return {...state, tableColumns: reducedArray};
 
     default:
       return state

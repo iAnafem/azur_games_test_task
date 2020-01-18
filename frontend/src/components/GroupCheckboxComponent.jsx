@@ -5,9 +5,12 @@ import * as indexActions from "../actions/indexActions";
 
 export const GroupCheckboxComponent = (props) => {
   const group = props.group;
+  const columnLabel = props.label;
   const dispatch = useDispatch();
   const clearButton = useSelector(state => state.clearButton);
   const setGroup = () => dispatch(indexActions.setGroup(group));
+  const addColumn = () => dispatch(indexActions.addTableColumn(columnLabel));
+  const removeColumn = () => dispatch(indexActions.removeTableColumn(columnLabel));
 
   const resetGroup = () => dispatch(indexActions.resetGroup(group));
 
@@ -19,9 +22,11 @@ export const GroupCheckboxComponent = (props) => {
   const handleChange = (event) => {
     if (checked) {
       setChecked(event.target.checked);
+      removeColumn();
       resetGroup();
     } else {
       setChecked(event.target.checked);
+      addColumn();
       setGroup();
     }
   };

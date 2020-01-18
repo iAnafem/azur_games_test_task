@@ -27,7 +27,7 @@ export const FilterTextFieldComponent = (props) => {
   const handleChange = (event) => {
     setValue(event.target.value);
     setFilter(
-      currentFilter, (currentFilter === 'minPageSize') ? parseInt(event.target.value) : event.target.value)
+      currentFilter, (currentFilter === 'minPageSize') ? parseInt(event.target.value) : event.target.value);
   };
 
   useEffect(

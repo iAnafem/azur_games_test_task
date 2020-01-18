@@ -54,7 +54,7 @@ const IndexPageContainer = () => {
       <Grid container className={classes.root}>
         <Grid container direction={'row'}>
           <Grid item xs={1} className={classes.checkbox}>
-            <GroupCheckboxComponent group={filters.grDate}/>
+            <GroupCheckboxComponent group={filters.grDate} label={'Date'}/>
           </Grid>
           <Grid item xs={1}>
             <Typography className={classes.labelText}>
@@ -83,7 +83,7 @@ const IndexPageContainer = () => {
         </Grid>
         <Grid container direction={'row'}>
           <Grid item xs={1} className={classes.checkbox}>
-            <GroupCheckboxComponent group={filters.grKey}/>
+            <GroupCheckboxComponent group={filters.grKey} label={'Keyword'}/>
           </Grid>
           <Grid item xs={1}>
             <Typography className={classes.labelText}>
@@ -101,7 +101,7 @@ const IndexPageContainer = () => {
         </Grid>
         <Grid container direction={'row'} >
           <Grid item xs={1} className={classes.checkbox}>
-            <GroupCheckboxComponent group={filters.grDom}/>
+            <GroupCheckboxComponent group={filters.grDom} label={'Domain'}/>
           </Grid>
           <Grid item xs={1}>
             <Typography className={classes.labelText}>
@@ -119,7 +119,7 @@ const IndexPageContainer = () => {
         </Grid>
         <Grid container direction={'row'}>
           <Grid item xs={1} className={classes.checkbox}>
-            <GroupCheckboxComponent group={filters.grStat}/>
+            <GroupCheckboxComponent group={filters.grStat} label={'Status code'}/>
           </Grid>
           <Grid item xs={1}>
             <Typography className={classes.labelText}>
