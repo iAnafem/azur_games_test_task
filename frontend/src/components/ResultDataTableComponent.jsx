@@ -10,102 +10,75 @@ import Paper from '@material-ui/core/Paper';
 import {useSelector} from "react-redux";
 
 const useStyles = makeStyles({
-  table: {
-    minWidth: 650,
-  },
+    table: {
+        width: 'auto',
+        border: 'solid',
+        borderWidth: 'thin',
+    },
 });
 
 
 export const ResultDataTableComponent = (props) => {
-  const classes = useStyles();
-  const columns = useSelector(state => state.tableColumns);
+    const classes = useStyles();
+    const isLoading = useSelector(state => state.isLoading);
 
-
+    const data = props.data;
     return (
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="simple table">
                 <TableHead>
-                    <TableRow>
-                        <TableCell>Date</TableCell>
-                        <TableCell>Keyword</TableCell>
-                        <TableCell>Page url</TableCell>
-                        <TableCell>Domain</TableCell>
-                        <TableCell>Load time</TableCell>
-                        <TableCell>Status code</TableCell>
-                        <TableCell>Page size</TableCell>
-                        <TableCell>Total size</TableCell>
-                    </TableRow>
+                    {isLoading ?
+                        <TableRow>
+                            <TableCell>Date</TableCell>
+                            <TableCell>Keyword</TableCell>
+                            <TableCell>Page url</TableCell>
+                            <TableCell>Domain</TableCell>
+                            <TableCell>Load time</TableCell>
+                            <TableCell>Status code</TableCell>
+                            <TableCell>Page size</TableCell>
+                            <TableCell>Total size</TableCell>
+                        </TableRow>
+                        :
+                        data.length !== 0 &&
+                        <TableRow>
+                            {'date_of_visit' in data[0] &&
+                            <TableCell>Date</TableCell>
+                            }
+                            {'keyword' in data[0] &&
+                            <TableCell>Keyword</TableCell>
+                            }
+                            {'page_url' in data[0] &&
+                            <TableCell>Page url</TableCell>
+                            }
+                            {'domain' in data[0] &&
+                            <TableCell>Domain</TableCell>
+                            }
+                            {'load_time' in data[0] &&
+                            <TableCell>Load time</TableCell>
+                            }
+                            {'status_code' in data[0] &&
+                            <TableCell>Status code</TableCell>
+                            }
+                            {'page_size' in data[0] &&
+                            <TableCell>Page size</TableCell>
+                            }
+                            {'total_size' in data[0] &&
+                            <TableCell>Total size</TableCell>
+                            }
+                        </TableRow>
+                    }
                 </TableHead>
                 <TableBody>
-                    {props.data.map((row, id) => (
+                    {data.map((row, id) => (
                         <TableRow key={`row_${id}`}>
-                            <TableCell>{row.date_of_visit}</TableCell>
-                            <TableCell>{row.keyword}</TableCell>
-                            <TableCell>{row.page_url}</TableCell>
-                            <TableCell>{row.domain}</TableCell>
-                            <TableCell>{row.load_time}</TableCell>
-                            <TableCell>{row.status_code}</TableCell>
-                            <TableCell>{row.page_size}</TableCell>
-                            <TableCell>{row.total_size}</TableCell>
+                            {Object.keys(row).map((column, pk) => (
+                                column !== 'id' &&
+                                <TableCell key={`column_${pk}`}>{row[column]}</TableCell>
+                            ))}
                         </TableRow>
                     ))}
                 </TableBody>
             </Table>
         </TableContainer>
     );
-}
-
-// <TableContainer component={Paper}>
-//       <Table className={classes.table} aria-label="simple table">
-//         <TableHead>
-//           {columns.length !== 0 ?
-//               <TableRow>
-//                   {console.log('do header')}
-//                 {columns.map((column, id) => (
-//                     <TableCell key={`column_${id}`}>{column}</TableCell>
-//                 ))}
-//                 <TableCell>Total size</TableCell>
-//               </TableRow>
-//               :
-//               <TableRow>
-//                 <TableCell>Date</TableCell>
-//                 <TableCell>Keyword</TableCell>
-//                 <TableCell>Page url</TableCell>
-//                 <TableCell>Domain</TableCell>
-//                 <TableCell>Load time</TableCell>
-//                 <TableCell>Status code</TableCell>
-//                 <TableCell>Page size</TableCell>
-//               </TableRow>
-//           }
-//         </TableHead>
-//           {columns.length !== 0 ?
-//               <TableBody>
-//                   {props.data.map((row, id) => (
-//                       <TableRow key={`row_${id}`}>
-//                           {console.log('do rows')}
-//                           {columns.includes('Date') && <TableCell>{row.date_of_visit}</TableCell>}
-//                           {columns.includes('Keyword') && <TableCell>{row.keyword}</TableCell>}
-//                           {columns.includes('Domain') && <TableCell>{row.domain}</TableCell>}
-//                           {columns.includes('Status code') && <TableCell>{row.status_code}</TableCell>}
-//                           <TableCell>{row.total_size}</TableCell>
-//                       </TableRow>
-//                   ))}
-//               </TableBody>
-//               :
-//               <TableBody>
-//                   {props.data.map((row, id) => (
-//                       <TableRow key={`row_${id}`}>
-//                           <TableCell>{row.date_of_visit}</TableCell>
-//                           <TableCell>{row.keyword}</TableCell>
-//                           <TableCell>{row.page_url}</TableCell>
-//                           <TableCell>{row.domain}</TableCell>
-//                           <TableCell>{row.load_time}</TableCell>
-//                           <TableCell>{row.status_code}</TableCell>
-//                           <TableCell>{row.page_size}</TableCell>
-//                           <TableCell>{row.total_size}</TableCell>
-//                       </TableRow>
-//                   ))}
-//               </TableBody>
-//           }
-//       </Table>
-//     </TableContainer>
+};

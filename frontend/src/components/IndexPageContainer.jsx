@@ -153,7 +153,9 @@ const IndexPageContainer = () => {
           </Grid>
         </Grid>
         <Grid container direction={'row'}>
-          <Grid item xs={12}>
+          <Grid item xs={1}>
+          </Grid>
+          <Grid item xs={11}>
             <ResultDataTableComponent data={state.visitedPages}/>
           </Grid>
         </Grid>
