@@ -1,13 +1,12 @@
 import indexActionsTypes from "../constants/indexActionsTypes";
-import {useSelector} from "react-redux";
 
 const types = indexActionsTypes;
 
 const initialState = {
   visitedPages : [],
   isLoading: true,
-  from: '',
-  until: '',
+  from: new Date("03/25/1900"),
+  until: new Date(),
   keyword: '',
   domain: '',
   statusCode: '',
