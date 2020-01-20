@@ -3,7 +3,7 @@ from backend.models import VisitedPage
 
 
 class VisitedPagesSerializer(serializers.ModelSerializer):
-    date_of_visit = serializers.DateTimeField(format("%d-%m-%Y"), required=False)
+    date_of_visit = serializers.DateTimeField(format("%d-%m-%Y"), required=False, input_formats=['%d-%m-%Y', 'iso-8601'])
     keyword = serializers.CharField(max_length=200, required=False)
     page_url = serializers.URLField(required=False)
     domain = serializers.CharField(max_length=200, required=False)

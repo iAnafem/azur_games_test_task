@@ -1,10 +1,9 @@
 {
-  "main.css": "/static/bundles/css/main.d1b05096.css",
-  "main.js": "/static/bundles/js/main.fe672250.js",
-  "main.js.map": "/static/bundles/js/main.fe672250.js.map",
-  "css/main.d1b05096.css.map": "/static/bundles/css/main.d1b05096.css.map",
+  "main.css": "/static/bundles/css/main.5df7d988.css",
+  "main.js": "/static/bundles/js/main.e4f72c38.js",
+  "main.js.map": "/static/bundles/js/main.e4f72c38.js.map",
+  "css/main.5df7d988.css.map": "/static/bundles/css/main.5df7d988.css.map",
   "index.html": "/static/bundles/index.html",
-  "js/main.fe672250.js.LICENSE": "/static/bundles/js/main.fe672250.js.LICENSE",
-  "precache-manifest.9903b364bfc0029b3b4a11686fd8bca4.js": "/static/bundles/precache-manifest.9903b364bfc0029b3b4a11686fd8bca4.js",
+  "precache-manifest.8ae6672819ba54db6e7acc5f4bc957b7.js": "/static/bundles/precache-manifest.8ae6672819ba54db6e7acc5f4bc957b7.js",
   "service-worker.js": "/static/bundles/service-worker.js"
 }

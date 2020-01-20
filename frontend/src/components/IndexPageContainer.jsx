@@ -11,6 +11,7 @@ import {FilterTextFieldComponent} from "./FilterTextFieldComponent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import {ResultDataTableComponent} from "./ResultDataTableComponent";
+import {CalendarComponent} from "./CalendarComponent";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,8 +62,11 @@ const IndexPageContainer = () => {
               Date filter
             </Typography>
           </Grid>
-          <Grid item xs={8}>
-            <FilterTextFieldComponent filter={filters.fromDate}/>
+          <Grid item xs={2}>
+            <CalendarComponent label={'From'} initialDate={state.from} filter={filters.fromDate}/>
+          </Grid>
+          <Grid item xs={2}>
+            <CalendarComponent label={'Until'} initialDate={state.until} filter={filters.untilDate}/>
           </Grid>
           <Grid item xs={2}>
             <Button

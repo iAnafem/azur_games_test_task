@@ -1,12 +1,14 @@
 import indexActionsTypes from "../constants/indexActionsTypes";
 import filtersAndGroupsNames from "../constants/filtersAndGroupsNames";
+import moment from "moment";
 
 
 const types = indexActionsTypes;
 const filters = filtersAndGroupsNames;
 
 export const fetchVisitedPages = (state) => {
-
+  const from = state.from;
+  const until = state.until;
   const keyword = state.keyword;
   const domain = state.domain;
   const statusCode = state.statusCode;
@@ -20,7 +22,11 @@ export const fetchVisitedPages = (state) => {
     let headers = {"Content-Type": "application/json"};
 
     return fetch(
-      `/api/visitedPages/?from=$until=&keyword=${
+      `/api/visitedPages/?from=${
+        moment(from).format("YYYY-MM-DD HH:mm:ss")
+      }&until=${
+        moment(until).format("YYYY-MM-DD HH:mm:ss")
+      }&keyword=${
         keyword
       }&domain=${
         domain
