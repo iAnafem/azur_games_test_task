@@ -1,10 +1,13 @@
 from backend.models import VisitedPage
 from django.db.models import Q
 from django.db.models import Avg, Count, Min, Sum
+from datetime import datetime, timedelta
 
 
 def conditional_date_filter(from_date, until_date):
     if from_date and until_date:
+        if from_date == until_date:
+            until_date = datetime.strptime(until_date, "%Y-%m-%d %H:%M:%S") + timedelta(days=1)
         return Q(date_of_visit__range=(from_date, until_date))
     else:
         return Q()

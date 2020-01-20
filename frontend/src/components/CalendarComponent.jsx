@@ -1,5 +1,5 @@
 import 'date-fns';
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import {
@@ -8,7 +8,7 @@ import {
 } from '@material-ui/pickers';
 import {makeStyles} from "@material-ui/core/styles";
 import * as indexActions from "../actions/indexActions";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import moment from "moment";
 
 const useStyles = makeStyles(theme => ({
@@ -31,15 +31,36 @@ export const CalendarComponent = (props) => {
   const today = new Date();
   const currentFilter = props.filter;
   const initialDate = props.initialDate;
+  const untilDate = useSelector(state => state.until);
   const [selectedDate, setSelectedDate] = React.useState(initialDate);
   const dispatch = useDispatch();
-  const setFilter = (currentFilter, fieldValue) => dispatch(indexActions.setFilter(currentFilter, fieldValue));
+  const setFilter = useCallback(
+    (currentFilter, fieldValue) => dispatch(indexActions.setFilter(currentFilter, fieldValue)), [dispatch]);
 
+  const clearButton = useSelector(state => state.clearButton);
+  const disableClearButton = useCallback(
+    () => dispatch(indexActions.disableClearButton()), [dispatch]);
 
   const handleDateChange = date => {
     setSelectedDate(date);
-    setFilter(currentFilter, moment(date).format("YYYY-MM-DD HH:mm:ss"));
+    setFilter(currentFilter, moment(date).format("YYYY-MM-DD"));
   };
+
+  useEffect(
+    () => {
+      setSelectedDate(initialDate);
+      disableClearButton();
+    }, [clearButton, disableClearButton, initialDate],
+  );
+
+  useEffect(
+    () => {
+      if (untilDate < selectedDate) {
+        setSelectedDate(untilDate);
+        setFilter(currentFilter, moment(untilDate).format("YYYY-MM-DD"));
+      }
+    }, [currentFilter, selectedDate, setFilter, untilDate]
+  );
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>

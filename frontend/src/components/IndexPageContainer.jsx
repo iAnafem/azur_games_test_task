@@ -23,11 +23,18 @@ const useStyles = makeStyles(theme => ({
   },
 
   checkbox: {
-    textAlign: 'right'
+    textAlign: 'right',
+    display: 'inline-grid',
+    alignContent: 'space-around',
   },
   labelText: {
-
+    display: 'inline-grid',
+    alignContent: 'space-around',
   },
+  buttons: {
+    alignContent: 'space-around',
+    display: 'inline-grid',
+  }
 
 
 }));
@@ -57,18 +64,18 @@ const IndexPageContainer = () => {
           <Grid item xs={1} className={classes.checkbox}>
             <GroupCheckboxComponent group={filters.grDate} label={'Date'}/>
           </Grid>
-          <Grid item xs={1}>
-            <Typography className={classes.labelText}>
+          <Grid item xs={1} className={classes.labelText}>
+            <Typography>
               Date filter
             </Typography>
           </Grid>
           <Grid item xs={2}>
-            <CalendarComponent label={'From'} initialDate={state.from} filter={filters.fromDate}/>
+            <CalendarComponent label={'From'} initialDate={state.from} filter={filters.fromDate} maxDate={state.until}/>
           </Grid>
           <Grid item xs={2}>
             <CalendarComponent label={'Until'} initialDate={state.until} filter={filters.untilDate}/>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={1} className={classes.buttons}>
             <Button
               variant="outlined"
               color="primary"
@@ -76,6 +83,8 @@ const IndexPageContainer = () => {
             >
               Go!
             </Button>
+          </Grid>
+          <Grid item xs={1} className={classes.buttons}>
             <Button
               variant="outlined"
               color="primary"
@@ -89,8 +98,8 @@ const IndexPageContainer = () => {
           <Grid item xs={1} className={classes.checkbox}>
             <GroupCheckboxComponent group={filters.grKey} label={'Keyword'}/>
           </Grid>
-          <Grid item xs={1}>
-            <Typography className={classes.labelText}>
+          <Grid item xs={1} className={classes.labelText}>
+            <Typography>
               Keyword filter
             </Typography>
           </Grid>
@@ -107,8 +116,8 @@ const IndexPageContainer = () => {
           <Grid item xs={1} className={classes.checkbox}>
             <GroupCheckboxComponent group={filters.grDom} label={'Domain'}/>
           </Grid>
-          <Grid item xs={1}>
-            <Typography className={classes.labelText}>
+          <Grid item xs={1} className={classes.labelText}>
+            <Typography>
               Domain filter
             </Typography>
           </Grid>
@@ -125,8 +134,8 @@ const IndexPageContainer = () => {
           <Grid item xs={1} className={classes.checkbox}>
             <GroupCheckboxComponent group={filters.grStat} label={'Status code'}/>
           </Grid>
-          <Grid item xs={1}>
-            <Typography className={classes.labelText}>
+          <Grid item xs={1} className={classes.labelText}>
+            <Typography>
               Status code filter
             </Typography>
           </Grid>
@@ -142,8 +151,8 @@ const IndexPageContainer = () => {
         <Grid container direction={'row'}>
           <Grid item xs={1}>
           </Grid>
-          <Grid item xs={1}>
-            <Typography className={classes.labelText}>
+          <Grid item xs={1} className={classes.labelText}>
+            <Typography>
               Page size filter
             </Typography>
           </Grid>
